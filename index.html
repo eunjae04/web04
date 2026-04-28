@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jquery js -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <!-- gsap js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <!-- gsap ScrollTrigger js -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <style>
+        body, h1, h2, p{
+            margin: 0;
+        }
+        /* #1 .con{
+            height: 140vh;
+            border: 1px solid #000;
+        }
+        .box{
+            width: 100px; height: 100px; background-color: #d1a2a2;
+        }
+        #con-tr{
+            height: 30vh;
+        } */
+
+        img{
+            width: 100%; height: 300px; object-fit: cover; display: block; 
+            margin-bottom: 12px;
+        }
+        header{
+            height: 30vh;
+        }
+        .main{
+            padding: 0 40px;
+        }
+        .main h1{
+            margin-bottom: 20px;
+        }
+        .con{
+            display: flex; gap: 20px;
+        }
+        .item{
+            width: calc((100% - 60px) / 4);
+        }
+        .item .title{
+            font-size: 18px; font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .item .subtitle{
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- #1 <div class="wrap">
+        <div class="con"></div>
+        <div class="con" id="con-tr">
+            <div class="button">
+                <button class="st">시작</button>
+                <button class="end">종료</button>
+            </div>
+            <div class="box"></div>
+        </div>
+        <div class="con"></div>
+        <div class="con"></div>
+    </div> -->
+
+    <div class="wrap">
+        <header></header>
+        <div class="main">
+            <h1>Contrary to popular</h1>
+            <div class="con"></div>
+        </div>
+        <header></header>
+    </div>
+
+
+    <script>
+        /* #1-1 (gsap) 
+            gsap.to(".box", {y:-200, duration:2, opacity:0});
+            gsap.from(".box", {y:-200, duration:2, opacity:0});
+            gsap.fromTo(".box", {y:0, opacity:0}, {duration:2, y:200, opacity:1});
+            gsap.to("대상", {속성:값, 속성:값}, 딜레이) => 원래 위치에서 해당 위치로 변경
+            from() => 지정 위치에서 현재 속성으로 이동
+            fromTo()
+
+            let tl = gsap.timeline();
+            tl.to(".box", {duration:1, x:200}).to(".box", {duration:2, rotation:360});
+            timeline() => 여러 애니메이션을 시퀀스(단계별로) 관리
+
+            let tl = gsap.to(".box", {duration:3, x:200});
+            gsap.kill(tl);
+
+            const an = gsap.to(".box", {
+                duration:3, 
+                keyframes: [
+                    {x:200},
+                    {y:200},
+                    {repeat:3, yoyo:true},
+                    {rotation:180, scale:1.5},
+                ],
+            });
+            an.pause();
+            let s = document.querySelector(".st");
+            let e = document.querySelector(".end");
+            s.addEventListener("click", function(){
+                an.play();
+            })
+            e.addEventListener("click", function(){
+                an.pause();
+            })
+            gsap.play() : 재생
+            .pause() : 정지
+            .resume() : 재개
+            .reverse() : 역재생
+            .restart() : 다시시작
+        */
+
+        /* #1-2 (gsap.scrollTrigger)
+            gsap.to(".box", {
+                scrollTrigger : {
+                    trigger : ".box",
+                    markers : true,
+                    start : "top 60%",
+                    end : "bottom 30%",
+                    scrub : true,
+                    pin : true,
+                },
+                backgroundColor : "red",
+            }); 
+        */
+
+        /* #2 */
+            const items = [
+                {
+                    title : "1. Lorem Ipsum generators",
+                    subtitle : "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration",
+                    src : "/img/sq1.jpg",
+                },
+                {
+                    title : "2. Lorem Ipsum generators",
+                    subtitle : "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration",
+                    src : "/img/sq2.jpg",
+                },
+                {
+                    title : "3. Lorem Ipsum generators",
+                    subtitle : "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration",
+                    src : "/img/sq3.jpg",
+                },
+                {
+                    title : "4. Lorem Ipsum generators",
+                    subtitle : "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration",
+                    src : "/img/sq4.jpg",
+                },
+            ]
+            const abc = items.map(item => {
+                return `
+                    <div class="item">
+                        <img src = "${item.src}" alt = "${item.title}">
+                        <p class = "title">${item.title}</p>
+                        <p class = "subtitle">${item.subtitle}</p>
+                    </div>
+                `
+            }).join("");
+            $(".main .con").html(abc);
+
+        /* #4 */
+
+
+
+        /* #5 */
+
+
+
+        /* #6 */
+
+
+
+    </script>
+</body>
+</html>
